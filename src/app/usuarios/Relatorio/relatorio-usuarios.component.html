@@ -1,0 +1,26 @@
+﻿<div class="example-container">  
+  <div class="titulo-relatorio" align="center"><h5>RELATÓRIO DE usuarios</h5></div> 
+  <div><p>{{apiService.strParametros}}</p></div>
+      <table class="table table-borderless" align="center" width="100%"> 
+        <thead class="thead-light"> 
+        <th>NOME</th>
+        <th>CNPJ</th>
+        <th>CÓDIGO</th>
+        <th>E-MAIL</th>
+        </thead> 
+        <tbody> 
+          <tr *ngFor="let usuarios of apiService.arrusuarios"> 
+           <td>{{usuarios.nome}}</td>
+           <td>{{usuarios.fone}}</td>
+           <td>{{usuarios.codigo}}</td>
+           <td>{{usuarios.email}}</td>
+          </tr> 
+
+        </tbody> 
+      </table> 
+  <div align="right"> 
+     <button [disabled]=true id="btnchart" name="btnchart" class="btn btn-outline-dark ml-1" matTooltip="Gráficos" (click)="GoogleChart()"><mat-icon>pie_chart</mat-icon></button> 
+     <button id="btnprint" name="btnprint" class="btn btn-outline-dark ml-1" matTooltip="Imprimir" (click)="Imprimir()"><mat-icon>printer</mat-icon></button> 
+     <button id="btnback" name="btnback" class="btn btn-outline-dark ml-1" matTooltip="Voltar" (click)="Voltar()"><mat-icon>navigate_before</mat-icon></button> 
+  </div> 
+</div> 

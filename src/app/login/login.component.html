@@ -1,0 +1,52 @@
+<app-loader></app-loader>
+  <div>
+    <div class="card-login">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <table class="table-login"  align="center" width="100%">
+        <tr>
+          <td align="center" width="100%">
+            <img align="center"alt="Stall Beach" title="Stall Beach" src="assets/img/menu.png">
+          </td>
+        </tr>    
+
+        <tr height="15px">
+          <td>
+            <div class="full-width-input">
+              <input class="form-control" placeholder="{{'LOGIN' | translate}}" formControlName="login" required>
+                  <mat-error *ngIf="loginForm.controls['login'].hasError('required') && loginForm.controls['login'].touched">
+                    Login é obrigatório
+                  </mat-error>
+            </div>
+                   
+            <div class="full-width-input">
+              <input class="form-control" type="password" placeholder="{{'SENHA' | translate}}" formControlName="senha" required>
+              <mat-error *ngIf="loginForm.controls['senha'].hasError('required') && loginForm.controls['senha'].touched">
+                  Senha é obrigatório
+                </mat-error>
+              </div>      
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <br>
+            <div align="right" class="full-width-input">
+              <button type="button" (click)="registrar()" class="btn btn-dark" [disabled]="loginForm.invalid">{{'Fazer Cadastro' | translate}}</button>
+              &nbsp;
+              &nbsp;
+              <button class="btn btn-success" [disabled]="loginForm.invalid">{{'Fazer Login' | translate}}</button>
+            </div>
+
+          </td>
+        </tr>
+        <tr height="150px">
+          <td>
+            &nbsp;
+          </td>
+        </tr>
+
+      </table>
+    </form>
+
+    </div>
+</div>

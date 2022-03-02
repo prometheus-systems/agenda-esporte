@@ -1,0 +1,32 @@
+﻿<div class="example-container">  
+  <div class="titulo-relatorio" align="center"><h5>RELATÓRIO DE COTAÇÕES</h5></div> 
+  <div><p>{{apiService.strParametros}}</p></div>
+      <table class="table table-borderless" align="center" width="100%"> 
+        <thead class="thead-light"> 
+        <th>EMPRESA</th>
+        <th>DATA</th>
+        <th>VALIDADE</th>
+        <th>STATUS</th>
+        <th>PRODUTO</th>
+        <th>QTDE</th>
+        <th>PREÇO</th>
+        </thead> 
+        <tbody> 
+          <tr *ngFor="let agenda of apiService.arragenda"> 
+           <td>{{agenda.emp_nome}}</td>
+           <td>{{agenda.ord_dtemi | date:'dd/MM/yyyy'}}</td>
+           <td>{{agenda.ord_dtval | date:'dd/MM/yyyy'}}</td>
+           <td>{{agenda.ord_status}}</td>
+           <td>{{agenda.ite_desc}}</td>
+           <td>{{agenda.ite_qtde_for}}</td>
+           <td>{{agenda.ite_preco}}</td>
+          </tr> 
+
+        </tbody> 
+      </table> 
+  <div align="right"> 
+     <button [disabled]=true id="btnchart" name="btnchart" class="btn btn-outline-dark ml-1" matTooltip="Gráficos" (click)="GoogleChart()"><mat-icon>pie_chart</mat-icon></button> 
+     <button id="btnprint" name="btnprint" class="btn btn-outline-dark ml-1" matTooltip="Imprimir" (click)="Imprimir()"><mat-icon>printer</mat-icon></button> 
+     <button id="btnback" name="btnback" class="btn btn-outline-dark ml-1" matTooltip="Voltar" (click)="Voltar()"><mat-icon>navigate_before</mat-icon></button> 
+  </div> 
+</div> 

@@ -1,0 +1,14 @@
+﻿export const environment = { 
+  production: true,  
+  CodigoUsuario:0, 
+  NomeUsuario:'',  
+  EmailUsuario:'',  
+  logado:false,
+  Device:'D',
+  Origem:'',
+  Tipo:'',
+  Alterar:false,
+  //URLBase: 'http://191.243.39.196:3002' 
+  URLBase: 'http://localhost:3002'
+  
+};

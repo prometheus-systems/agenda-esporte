@@ -1,0 +1,36 @@
+<div align="center" class="principal-container">
+    <div>
+        <div class="titulo" align="center"><h5>HISTÓRICO</h5></div> 
+        <cdk-virtual-scroll-viewport class="virtual-mobile" itemSize="100" >
+            <mat-accordion> 
+                <mat-expansion-panel *ngFor="let agenda of apiService.arragenda"> 
+                  <mat-expansion-panel-header> 
+                    <mat-panel-title> 
+                      {{agenda.codigo}}: Data: {{agenda.data | date:'dd/MM/yyyy'}} Horário: {{agenda.horaini}}-{{agenda.horafin}} 
+                    </mat-panel-title> 
+                  </mat-expansion-panel-header> 
+                  <table class="table table-borderless" align="center" width="100%"> 
+                    <thead class="thead-light"> 
+                      <th>Foto</th>
+                    <th>Confirmados</th>
+
+                    </thead> 
+                    <tbody> 
+                      <tr *ngFor="let participantes of agenda.participantes"> 
+                        <td>      
+                          <div class="fotos">
+                            <img class="reframe" [src]="participantes.foto" (click)="onClickViewImage(participantes.foto)"/> 
+                          </div>
+                          
+                        </td>
+                       <td>{{participantes.nome}}</td>
+                      </tr> 
+            
+                    </tbody> 
+                  </table>                
+                </mat-expansion-panel> 
+            </mat-accordion>
+
+        </cdk-virtual-scroll-viewport>        
+    </div>
+</div>

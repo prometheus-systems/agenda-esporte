@@ -1,0 +1,23 @@
+﻿ 
+<form #form="ngForm" autocomplete="off" *ngIf="apiService.formParRel" (submit)="onSubmit(form)"> 
+ <hr> 
+ <h5 class="text-center">FILTRO RELATÓRIOS usuarios</h5> 
+ <hr> 
+ <!--
+    <div class="example-container"> usuariosusuariosusuariosusuarios
+    <mat-form-field> 
+      <mat-label>Descrição</mat-label>
+      <mat-select name="par_gus_descricao" #par_gus_descricao="ngModel" [(ngModel)]="apiService.formParRel.par_gus_descricao"> 
+        <mat-option [value]="">TODAS</mat-option> 
+        <mat-option *ngFor="let grupo_usuarios of arrgrupo_usuarios" [value]="grupo_usuarios.gus_descricao">
+          {{grupo_usuarios.gus_descricao}} 
+        </mat-option> 
+      </mat-select> 
+    </mat-form-field> 
+  </div> -->
+ 
+<div class="button-row"> 
+   <button type="submit" class="btn btn-dark" [disabled]="!validateForm">Imprimir</button> 
+   <button type="button" (click)="onCancelar()" class="btn btn-outline-dark ml-1"><i class="fa fa-close"></i> Cancelar</button> 
+</div> 
+</form> 

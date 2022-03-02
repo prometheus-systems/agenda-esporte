@@ -1,0 +1,41 @@
+﻿ 
+<form #form="ngForm" autocomplete="off" *ngIf="apiService.formParRel" (submit)="onSubmit(form)"> 
+ <hr> 
+ <h5 class="text-center">FILTRO RELATÓRIO COTAÇÕES</h5> 
+ <hr> 
+ 
+  <div class="example-container" *ngIf="tipo=='A'">
+    <mat-form-field> 
+      <mat-label>usuario</mat-label>
+      <mat-select name="par_usuario" #par_usuario="ngModel" [(ngModel)]="apiService.formParRel.par_usuario"> 
+        <mat-option [value]="">TODAS</mat-option> 
+        <mat-option *ngFor="let usuarios of arrusuarios" [value]="usuarios.codigo">
+          {{usuarios.nome}} 
+        </mat-option> 
+      </mat-select> 
+    </mat-form-field> 
+  </div> 
+
+  <div class="example-container">
+    <mat-form-field>
+      <input matInput [matDatepicker]="par_data1" placeholder="{{'' | translate}}" name="par_data1" [(ngModel)]="apiService.formParRel.par_data1">  
+      <mat-datepicker-toggle matSuffix [for]="par_data1"></mat-datepicker-toggle> 
+      <mat-datepicker #par_data1></mat-datepicker> 
+      <mat-error> {{'é obrigatório' | translate}}!.</mat-error> 
+    </mat-form-field> 
+  </div> 
+ 
+  <div class="example-container">
+    <mat-form-field> 
+      <input matInput [matDatepicker]="par_data2" placeholder="{{'' | translate}}" name="par_data2" [(ngModel)]="apiService.formParRel.par_data2">  
+      <mat-datepicker-toggle matSuffix [for]="par_data2"></mat-datepicker-toggle> 
+      <mat-datepicker #par_data2></mat-datepicker> 
+      <mat-error> {{'é obrigatório' | translate}}!.</mat-error> 
+    </mat-form-field> 
+  </div> 
+ 
+<div class="button-row"> 
+   <button type="submit" class="btn btn-dark" [disabled]="!validateForm">Imprimir</button> 
+   <button type="button" (click)="onCancelar()" class="btn btn-outline-dark ml-1"><i class="fa fa-close"></i> Cancelar</button> 
+</div> 
+</form> 

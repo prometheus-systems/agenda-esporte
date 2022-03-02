@@ -1,0 +1,27 @@
+
+<footer *ngIf="getStatus_logado$ | async as getStatus_logado">
+  <div align="center" class="barfooter">
+    <button type="button" mat-icon-button matTooltip="{{'Inicial' | translate}}" aria-label="Inicial" (click)="Home()"> 
+      <mat-icon>home</mat-icon> 
+    </button> 
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button type="button" mat-icon-button matTooltip="{{'Convites' | translate}}" aria-label="Convites" (click)="Convites()"> 
+      <mat-icon>group_add</mat-icon> 
+    </button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button type="button" mat-icon-button matTooltip="{{'Histórico' | translate}}" aria-label="Histórico" (click)="Historico()"> 
+      <mat-icon>date_range</mat-icon> 
+    </button>
+    &nbsp;
+    &nbsp;
+    &nbsp; 
+    <button type="button" mat-icon-button matTooltip="{{'Perfil' | translate}}" aria-label="Perfil" (click)="Perfil()"> 
+      <mat-icon>account_circle</mat-icon> 
+    </button>     
+  </div>
+ </footer>
+

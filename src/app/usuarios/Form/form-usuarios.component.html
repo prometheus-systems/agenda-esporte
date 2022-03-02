@@ -1,0 +1,87 @@
+﻿<form #form="ngForm" autocomplete="off" *ngIf="apiService.formData" (submit)="onSubmit(form)">  
+  
+  <div class="full-width-input">
+    <h5 *ngIf="apiService.formData.status_reg=='U'" class="text-center">ALTERAR DADOS</h5> 
+    <h5 *ngIf="apiService.formData.status_reg=='I'" class="text-center">CADASTRAR-SE</h5>  
+    <hr>
+    <cdk-virtual-scroll-viewport class="virtual-mobile" itemSize="100" >
+    <input *ngIf="apiService.formData.status_reg=='I'" type="hidden"  name="codigo" #codigo="ngModel" [(ngModel)]="apiService.formData.codigo"> 
+    <div class="example-container" *ngIf="apiService.formData.status_reg=='U'"> 
+
+    <mat-form-field> 
+      <input matInput type="number" placeholder="Código"  min="0" [disabled]="true" name="codigo" #codigo="ngModel" [(ngModel)]="apiService.formData.codigo" > 
+      </mat-form-field> 
+    </div> 
+
+    <div class="example-container">
+      <mat-form-field> 
+        <input minlength="4" maxlength="60" matInput placeholder="Nome" name="nome" #nome="ngModel" [(ngModel)]="apiService.formData.nome"> 
+        </mat-form-field> 
+    </div> 
+  
+    <div class="example-container">
+      <mat-form-field> 
+        <input matInput placeholder="Fone" name="fone" #fone="ngModel" [(ngModel)]="apiService.formData.fone" mask="(00)00000-0000">
+      </mat-form-field> 
+    </div>   
+  
+    <div *ngIf="apiService.formData.status_reg=='U'" class="example-container">
+      <mat-form-field> 
+        <input matInput placeholder="E-mail" name="email" #email="ngModel" [(ngModel)]="apiService.formData.email" (blur)="validaEmail(apiService.formData.codigo,apiService.formData.email)"> 
+        <mat-hint *ngIf="emailErro">{{'ESSE E-MAIL JÁ EXISTE PARA OUTRO REGISTRO!' | translate}}!</mat-hint>
+      </mat-form-field> 
+    </div> 
+
+    <div *ngIf="apiService.formData.status_reg=='I'" class="example-container">
+      <mat-form-field> 
+        <input matInput placeholder="E-mail" name="email" #email="ngModel" [(ngModel)]="apiService.formData.email" (blur)="validaEmail(0,apiService.formData.email)"> 
+        <mat-hint *ngIf="emailErro">{{'ESSE E-MAIL JÁ EXISTE PARA OUTRO REGISTRO!' | translate}}!</mat-hint>
+      </mat-form-field> 
+    </div> 
+
+    <div class="example-container">
+      <mat-form-field> 
+        <input matInput type="password" minlength="4" maxlength="10" placeholder="Senha" name="senha" #senha="ngModel" [(ngModel)]="apiService.formData.senha">
+      </mat-form-field> 
+    </div> 
+
+    <div *ngIf="troca_senha">
+      <div class="example-container">
+        <mat-form-field> 
+          <input matInput type="password" minlength="4" maxlength="10" placeholder="Senha Antiga" name="senhaant" #senhaant="ngModel" [(ngModel)]="apiService.formData.senhaant"> 
+        </mat-form-field> 
+      </div>   
+
+      <div class="example-container">
+        <mat-form-field> 
+          <input matInput type="password" minlength="4" maxlength="10" placeholder="Senha Nova" name="senhanov1" #senhanov1="ngModel" [(ngModel)]="apiService.formData.senhanov1"> 
+        </mat-form-field> 
+      </div>   
+
+      <div class="example-container">
+        <mat-form-field> 
+          <input matInput type="password" minlength="4" maxlength="10" placeholder="Nova Confirmação" name="senhanov2" #senhanov2="ngModel" [(ngModel)]="apiService.formData.senhanov2"> 
+        </mat-form-field> 
+      </div>  
+
+      
+    </div>
+    <div class="example-container"> 
+      <mat-form-field> 
+        <ngx-mat-file-input placeholder="{{'Foto Perfil' | translate}}" name="foto" #foto="ngModel" [(ngModel)]="apiService.formData.foto" (change)="onFileSelect($event)"></ngx-mat-file-input> 
+      </mat-form-field> 
+      <button type="button" class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">ENVIAR IMAGEM</button>
+      <div > 
+      <div *ngIf="apiService.formData.foto!='[object Object]'" >  
+        <img *ngIf="apiService.formData.foto" class="reframe" [src]="apiService.formData.foto"/></div> 
+      </div> 
+    </div>
+     
+  </cdk-virtual-scroll-viewport>
+  <hr>
+    <div class="button-row"> 
+      <button type="submit" class="btn btn-dark" [disabled]="!Valido">Gravar</button>  
+      <button type="button" (click)="onCancelar()" class="btn btn-outline-dark ml-1"><i class="fa fa-close"></i> Cancelar</button> 
+    </div>
+  </div> 
+</form> 

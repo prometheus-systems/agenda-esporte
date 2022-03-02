@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0'">
+  <meta name="description" content="">
+  <meta name="keywords"">
+  <meta name="author" content="prometheus">  
+  <title>Stall Beach</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script language=javascript>
+      if (global === undefined) {
+    var global = window;
+  }
+    $("#assessed select").change(function () {
+      var $this = $(this);
+      if( $this.val() === 'null') {
+          $this.next()
+              .attr("disabled", true);
+      }
+      else {
+          $this.next()
+              .removeAttr("disabled")
+              .focus();
+      }
+    });
+    
+    function focusInput1() {
+      document.getElementById("ite_qtde_for").focus();
+    }
+
+    function focusInput2() {
+        document.getElementById("ite_preco").focus();
+    }
+    document.onkeydown = function () { 
+      switch (event.keyCode) {
+        case 116 :  
+           event.returnValue = false;
+           event.keyCode = 0;           
+           return false;             
+         case 82 : 
+           if (event.ctrlKey) {  
+              event.returnValue = false;
+             event.keyCode = 0;             
+             return false;
+      }
+    }
+
+} 
+
+
+</script>
+
+  
+  
+</head>
+<body>
+  <!-- <app-root></app-root> -->
+  <div class="basic-container">
+  <my-app>CARREGANDO...</my-app>
+</div>
+</body>
+</html>
